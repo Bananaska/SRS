@@ -16,7 +16,6 @@ public class GameContext : MonoBehaviour
     }
     private void Awake()
     {
-
         if (_instance == null)
         {
 
@@ -28,6 +27,11 @@ public class GameContext : MonoBehaviour
 
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        SceneLoader.Instance.LoadNextScene();
     }
 
 }
