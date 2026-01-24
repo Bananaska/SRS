@@ -29,12 +29,18 @@ public class MovementController : MonoBehaviour
     [Header("Компоненты")]
     public Transform character;
     public Transform cameraTransform;
+    [SerializeField] private InputReceiver _inputReceiver;
 
     private float rotationX = 0f;
     private float rotationY = 0f;
     private Quaternion originalCharacterRotation;
     private Quaternion originalCameraRotation;
 
+    private void Awake()
+    {
+        _inputReceiver.OnMouseMove += Move;
+
+    }
     void Start()
     {
         // Инициализация
@@ -49,6 +55,11 @@ public class MovementController : MonoBehaviour
 
         originalCharacterRotation = character.localRotation;
         originalCameraRotation = cameraTransform.localRotation;
+    }
+
+    private void Move(Vector2 mouseDelta)
+    {
+
     }
 
     void Update()
