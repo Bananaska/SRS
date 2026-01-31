@@ -16,7 +16,7 @@ public class LookAtCameraZOnly : MonoBehaviour
             return;
 
         // Получаем текущее вращение объекта
-        Vector3 currentRotation = transform.rotation.eulerAngles;
+        Vector3 currentRotation = gameObject.transform.rotation.eulerAngles;
 
         // Поворачиваем объект к камере
         transform.LookAt(mainCamera.transform);

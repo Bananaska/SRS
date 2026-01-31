@@ -146,12 +146,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201971683}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.17741372, z: 0.5963548}
-  m_LocalScale: {x: 5.600986, y: 5.5441895, z: 0.673011}
+  m_LocalRotation: {x: -0.030191548, y: -0, z: -0, w: 0.99954414}
+  m_LocalPosition: {x: 0, y: -0.184, z: 1.718}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 325628186}
+  m_Father: {fileID: 1744400986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &281630875
 GameObject:
@@ -164,9 +164,10 @@ GameObject:
   - component: {fileID: 281630877}
   - component: {fileID: 281630876}
   - component: {fileID: 281630878}
+  - component: {fileID: 281630879}
   m_Layer: 0
   m_Name: "\u0441\u043E\u043B\u0434\u0430\u0442\u0411\u043E\u0431\u044B\u0447\u043D\u044B\u0439"
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,6 +260,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 11.840001, y: 11.840001, z: 3.5144022}
   m_Center: {x: 0, y: 0, z: 1.6572013}
+--- !u!114 &281630879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281630875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111f3e8d10d01c747827907c5c1b1978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyHealth: 1
 --- !u!1 &325628185
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +284,6 @@ GameObject:
   - component: {fileID: 325628186}
   - component: {fileID: 325628189}
   - component: {fileID: 325628188}
-  - component: {fileID: 325628187}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -286,35 +299,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 325628185}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.08438467, y: -0, z: -0, w: 0.99643326}
-  m_LocalPosition: {x: 0, y: 0.018, z: 1.2189}
+  m_LocalRotation: {x: -0.030191548, y: -0, z: -0, w: 0.99954414}
+  m_LocalPosition: {x: 0, y: 0.3000002, z: 1.0900002}
   m_LocalScale: {x: 0.17854, y: 0.180369, z: 1.4858599}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 201971684}
+  m_Children: []
   m_Father: {fileID: 1301188575}
-  m_LocalEulerAnglesHint: {x: -9.681, y: 0, z: 0}
---- !u!65 &325628187
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325628185}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -3.46, y: 0, z: 0}
 --- !u!23 &325628188
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -487,7 +478,7 @@ GameObject:
   - component: {fileID: 1301188578}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -632,7 +623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8577405393340304237, guid: 91706997da981164ab175c61b33fbccf, type: 3}
   firePoint: {fileID: 201971684}
-  fireRate: 0.1
+  fireRate: 0.01
   projectileSpeed: 200
   projectileLifetime: 3
 --- !u!1 &1744400983
@@ -721,10 +712,11 @@ Transform:
   m_GameObject: {fileID: 1744400983}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5380001, z: 0.10999966}
+  m_LocalPosition: {x: 0, y: 0.5380001, z: 0.197}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 201971684}
   m_Father: {fileID: 1301188575}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1746963214
