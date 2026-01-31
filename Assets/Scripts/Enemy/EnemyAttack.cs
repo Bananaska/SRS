@@ -32,6 +32,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void Shoot()
     {
+        Vector3 direction = (_target.position - firePoint.position).normalized;
         if (projectilePrefab == null)
         {
             Debug.LogError("Projectile prefab не назначен!");
@@ -49,7 +50,7 @@ public class EnemyAttack : MonoBehaviour
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.velocity = firePoint.forward * projectileSpeed;
+                rb.velocity = direction * projectileSpeed;
             }
             Destroy(projectile, projectileLifetime);
             Debug.Log("Выстрел произведен!");
