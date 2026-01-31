@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 1301188576}
   - component: {fileID: 1301188577}
   - component: {fileID: 1301188578}
+  - component: {fileID: 1301188579}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -484,7 +485,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301188571}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c353b1a9b6eecd41bc3290c84b984a2, type: 3}
   m_Name: 
@@ -504,8 +505,23 @@ MonoBehaviour:
   projectilePrefab: {fileID: 8577405393340304237, guid: 91706997da981164ab175c61b33fbccf, type: 3}
   firePoint: {fileID: 201971684}
   fireRate: 1
-  projectileSpeed: 200
+  projectileSpeed: 175
   projectileLifetime: 3
+  _possibleShoot: 1
+--- !u!114 &1301188579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301188571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf8259afd7c41b48833e7845f2ef0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shooting: {fileID: 1301188578}
+  _inputReceiver: {fileID: 1301188577}
 --- !u!1 &1744400983
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooting : MonoBehaviour
+public class ShootingController : MonoBehaviour
 {
     [Header("Префаб снаряда")]
     public GameObject projectilePrefab;
@@ -12,6 +14,10 @@ public class Shooting : MonoBehaviour
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private float projectileSpeed = 10f;
     [SerializeField] private float projectileLifetime = 3f;
+
+    [Header("ZoV")]
+    [SerializeField] private bool _possibleShoot = true;
+
 
     private float nextFireTime = 0f;
     private Camera mainCamera;
@@ -31,23 +37,7 @@ public class Shooting : MonoBehaviour
             }
         }
     }
-
-    private void Update()
-    {
-        HandleShooting();
-    }
-
-    private void HandleShooting()
-    {
-        // Проверяем нажатие ЛКМ и кулдаун
-        if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
-        {
-            Shoot();
-            nextFireTime = Time.time + fireRate;
-        }
-    }
-
-    private void Shoot()
+    public void TryShoot()
     {
         if (projectilePrefab == null)
         {
@@ -56,33 +46,26 @@ public class Shooting : MonoBehaviour
         }
 
         // Создаем снаряд
-        GameObject projectile = Instantiate(
+        if (_possibleShoot == true)
+        {
+            _possibleShoot = false;
+            StartCoroutine(RateFire());
+            GameObject projectile = Instantiate
+         (
             projectilePrefab,
             firePoint.position,
             firePoint.rotation
-        );
+         );
 
-        // Добавляем скорость снаряду
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.velocity = firePoint.forward * projectileSpeed;
-        }
-        else
-        {
-            // Для 2D игр
-            Rigidbody2D rb2D = projectile.GetComponent<Rigidbody2D>();
-            if (rb2D != null)
+            Rigidbody rb = projectile.GetComponent<Rigidbody>();
+            if (rb != null)
             {
-                rb2D.velocity = firePoint.right * projectileSpeed;
+                rb.velocity = firePoint.forward * projectileSpeed;
             }
+            Destroy(projectile, projectileLifetime);
+            Debug.Log("Выстрел произведен!");
+
         }
-
-        // Уничтожаем снаряд через время
-        Destroy(projectile, projectileLifetime);
-
-        // Визуальная обратная связь
-        Debug.Log("Выстрел произведен!");
     }
 
     // Визуализация точки выстрела в редакторе
@@ -94,5 +77,11 @@ public class Shooting : MonoBehaviour
             Gizmos.DrawSphere(firePoint.position, 0.1f);
             Gizmos.DrawLine(firePoint.position, firePoint.position + firePoint.forward * 1f);
         }
+    }
+
+    IEnumerator RateFire()
+    {
+       yield return new WaitForSeconds(1f); 
+        _possibleShoot = true;
     }
 }
