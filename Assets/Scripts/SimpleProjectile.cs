@@ -24,7 +24,7 @@ public class SimpleProjectile : MonoBehaviour
 
             //Destroy(gameObject);
         }
-        else if (!other.CompareTag("Player") && !other.CompareTag("Projectile"))
+        else if (!other)
         {
             // ”ничтожаем при столкновении с окружением
             Destroy(gameObject);
