@@ -32,6 +32,8 @@ public class EnemyAttack : MonoBehaviour
 
     private void Shoot()
     {
+        StartCoroutine(AttackCoroutine());
+
         Vector3 direction = (_target.position - firePoint.position).normalized;
         if (projectilePrefab == null)
         {

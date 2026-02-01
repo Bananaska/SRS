@@ -180,11 +180,11 @@ Transform:
   m_GameObject: {fileID: 325628185}
   serializedVersion: 2
   m_LocalRotation: {x: -0.030191548, y: -0, z: -0, w: 0.99954414}
-  m_LocalPosition: {x: 0, y: 0.3000002, z: 1.0900002}
+  m_LocalPosition: {x: 0, y: -0.23799992, z: 0.8930001}
   m_LocalScale: {x: 0.17854, y: 0.180369, z: 1.4858599}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1301188575}
+  m_Father: {fileID: 1744400986}
   m_LocalEulerAnglesHint: {x: -3.46, y: 0, z: 0}
 --- !u!23 &325628188
 MeshRenderer:
@@ -456,7 +456,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1744400986}
-  - {fileID: 325628186}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1301188576
@@ -466,23 +465,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301188571}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa510a412c966a946bdbca658f81d7f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axes: 0
-  sensitivityX: 2
-  sensitivityY: 2
-  minimumX: -60
-  maximumX: 60
-  minimumY: -30
-  maximumY: 30
-  smooth: 1
-  smoothTime: 11
-  character: {fileID: 1301188575}
-  cameraTransform: {fileID: 1744400986}
   _inputReceiver: {fileID: 1301188577}
+  mouseSensitivity: 1000
+  minYAngle: -90
+  maxYAngle: 90
+  playerBody: {fileID: 1301188575}
+  cameraTransform: {fileID: 1744400986}
 --- !u!114 &1301188577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,6 +611,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 201971684}
+  - {fileID: 325628186}
   m_Father: {fileID: 1301188575}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1746963214
@@ -966,7 +960,7 @@ PrefabInstance:
       objectReference: {fileID: 679349183}
     - target: {fileID: 3972051808469662415, guid: 51e141d63b910a743a662d7e6a652c61, type: 3}
       propertyPath: _atackRate
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3972051808469662415, guid: 51e141d63b910a743a662d7e6a652c61, type: 3}
       propertyPath: projectileSpeed
