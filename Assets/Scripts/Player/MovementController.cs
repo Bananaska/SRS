@@ -6,23 +6,27 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     [SerializeField] private InputReceiver _inputReceiver;
+
     [Header("Настройки чувствительности")]
-    public float mouseSensitivity = 1f;
+    [SerializeField] private float _mouseSensitivity = 1f;
 
     [Header("Ограничения")]
-    public float minYAngle = -90f;
-    public float maxYAngle = 90f;
+    [SerializeField] private float _minYAngle = -90f;
+    [SerializeField] private float _maxYAngle = 90f;
+    [SerializeField] private float _minXAngle = -90f;
+    [SerializeField] private float _maxXAngle = 90f;
+
 
     [Header("Цели вращения")]
-    public Transform playerBody; // Для горизонтального вращения тела игрока
-    public Transform cameraTransform; // Для вертикального вращения камеры
+    [SerializeField] private Transform playerBody; 
+    [SerializeField] private Transform cameraTransform; 
 
+    private float yRotation = 0f;
     private float xRotation = 0f;
 
     private void Awake()
     {
         _inputReceiver.OnMouseMove += Rotate;
-
     }
     void Start()
     {
@@ -34,28 +38,24 @@ public class MovementController : MonoBehaviour
             cameraTransform = Camera.main.transform;
     }
 
-    void Update()
-    {
-
-    }
-
     private void Rotate(Vector2 angle)
     {
-        float mouseX = angle.x * mouseSensitivity * Time.deltaTime;
-        float mouseY = angle.y * mouseSensitivity * Time.deltaTime;
+        float mouseX = angle.x * _mouseSensitivity * Time.deltaTime;
+        float mouseY = angle.y * _mouseSensitivity * Time.deltaTime;
 
-        // Вертикальный поворот (вверх/вниз)
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, minYAngle, maxYAngle);
+        yRotation -= mouseY;
+        yRotation = Mathf.Clamp(yRotation, _minYAngle, _maxYAngle);
 
-        // Применяем вращение камеры
-        cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        cameraTransform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
 
         // Горизонтальный поворот (влево/вправо) - вращаем тело игрока
         if (playerBody != null)
+        {
+            xRotation -= mouseX;
+            xRotation = Mathf.Clamp(xRotation, _minXAngle, _maxXAngle);
             playerBody.Rotate(Vector3.up * mouseX);
+        }
+
     }
-
-
 }
 

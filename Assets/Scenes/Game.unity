@@ -471,9 +471,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReceiver: {fileID: 1301188577}
-  mouseSensitivity: 1000
-  minYAngle: -90
-  maxYAngle: 90
+  _mouseSensitivity: 1000
+  _minYAngle: -90
+  _maxYAngle: 90
+  _minXAngle: -90
+  _maxXAngle: 90
   playerBody: {fileID: 1301188575}
   cameraTransform: {fileID: 1744400986}
 --- !u!114 &1301188577

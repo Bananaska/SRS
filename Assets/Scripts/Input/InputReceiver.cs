@@ -10,10 +10,6 @@ public class InputReceiver : MonoBehaviour
     public event Action<Vector2> OnMouseMove;
     private Vector2 _mouseMovement = new();
 
-    private void Awake()
-    {
-        
-    }
 
     private void Update()
     {
