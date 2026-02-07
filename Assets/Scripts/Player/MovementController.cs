@@ -53,9 +53,9 @@ public class MovementController : MonoBehaviour
         {
             xRotation -= mouseX;
             xRotation = Mathf.Clamp(xRotation, _minXAngle, _maxXAngle);
-            playerBody.Rotate(Vector3.up * mouseX);
-        }
+            playerBody.localRotation = Quaternion.Euler(0f, -xRotation, 0f);
 
+        }
     }
 }
 

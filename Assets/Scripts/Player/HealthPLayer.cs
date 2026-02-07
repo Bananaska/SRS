@@ -17,10 +17,12 @@ public class HealthPLayer : MonoBehaviour
     {
         if (Instance != null)
         {
+            Destroy(this);
             Debug.Log("HealthPLayer уже существует");
             return;
         }
         Instance = this;
+
     }
 
     public void PlayerDeath()
@@ -43,5 +45,11 @@ public class HealthPLayer : MonoBehaviour
             _health = _maxHealth;
         }
         OnPlayerHealthChanged?.Invoke(_health);
+    }
+    
+    private void OnDestroy()
+    {
+        OnDeath -= PlayerDeath;
+        OnPlayerHealthChanged -= PlayerHealthChanged;
     }
 }

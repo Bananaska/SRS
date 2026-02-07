@@ -12,11 +12,14 @@ public class SimpleProjectile : MonoBehaviour
     {
         if (other.CompareTag(targetTag))
         {
+            Debug.Log("Попадание");
+
             // Нанесение урона
             EnemyHealth health = other.gameObject.GetComponent<EnemyHealth>();
             if (health != null)
             {
                 health.TakeDamage(_damage);
+                Debug.Log("Попадание");
             }
 
             //Destroy(gameObject);

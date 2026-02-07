@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    //[SerializeField] private int _damage = 1;
     [Header("Префаб снаряда")]
-    public GameObject projectilePrefab;
+    [SerializeField] private GameObject _projectilePrefab;
 
     [Header("Точка выстрела")]
-    public Transform firePoint;
+    [SerializeField] private Transform _firePoint;
 
     [Header("Игрок")]
     [SerializeField] private Transform _target;
@@ -19,50 +18,49 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private float _atackRange = 5;
 
     [Header("Настройки Снаряда")]
-    [SerializeField] private float projectileSpeed = 10f;
-    [SerializeField] private float projectileLifetime = 3f;
+    [SerializeField] private float _projectileSpeed = 10f;
+    [SerializeField] private float _projectileLifetime = 3f;
 
 
 
     private void Start()
     {
-        _target = GameObject.FindGameObjectWithTag("Player").transform;
+        if (_target != null)
+        {
+            _target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
         StartCoroutine(AttackCoroutine());
+
     }
 
-    private void Shoot()
+    IEnumerator AttackCoroutine()
     {
-        StartCoroutine(AttackCoroutine());
-
-        Vector3 direction = (_target.position - firePoint.position).normalized;
-        if (projectilePrefab == null)
+        while (true)
         {
-            Debug.LogError("Projectile prefab не назначен!");
-            return;
-        }
+            Vector3 spread = new Vector3(
+            Random.Range(-_atackRange, _atackRange),
+            Random.Range(-_atackRange, _atackRange),
+            Random.Range(-_atackRange, _atackRange)
+            );
+            Vector3 direction = (_target.position - _firePoint.position + spread).normalized;
 
-        // Создаём снаряд
+            // Создаём снаряд
             GameObject projectile = Instantiate
          (
-            projectilePrefab,
-            firePoint.position,
-            firePoint.rotation
+            _projectilePrefab,
+            _firePoint.position,
+            _firePoint.rotation
          );
 
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.velocity = direction * projectileSpeed;
+                rb.velocity = direction * _projectileSpeed;
             }
-            Destroy(projectile, projectileLifetime);
-            Debug.Log("Выстрел произведен!");
+            Destroy(projectile, _projectileLifetime);
+            Debug.Log("Враг выстрелил!");
+            yield return new WaitForSeconds(_atackRate);
 
-        
-    }
-
-    IEnumerator AttackCoroutine()
-    {
-        yield return new WaitForSeconds(_atackRate);
-        Shoot();
+        }
     }
 }

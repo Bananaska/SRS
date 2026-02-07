@@ -18,25 +18,6 @@ public class ShootingController : MonoBehaviour
     [Header("ZoV")]
     [SerializeField] private bool _possibleShoot = true;
 
-
-    private float nextFireTime = 0f;
-    private Camera mainCamera;
-
-    private void Start()
-    {
-        mainCamera = Camera.main;
-
-        // Автоматически ищем точку выстрела если не назначена
-        if (firePoint == null)
-        {
-            firePoint = transform.Find("FirePoint");
-            if (firePoint == null)
-            {
-                firePoint = transform;
-                Debug.LogWarning("FirePoint не найден, использую позицию объекта");
-            }
-        }
-    }
     public void TryShoot()
     {
         if (projectilePrefab == null)
@@ -81,7 +62,7 @@ public class ShootingController : MonoBehaviour
 
     IEnumerator RateFire()
     {
-       yield return new WaitForSeconds(1f); 
+       yield return new WaitForSeconds(fireRate); 
         _possibleShoot = true;
     }
 }
