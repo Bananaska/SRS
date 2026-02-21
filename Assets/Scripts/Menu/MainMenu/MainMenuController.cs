@@ -16,4 +16,10 @@ public class MainMenuController : MonoBehaviour
         SceneLoader.Instance.LoadNextScene();
 
     }
+
+    private void OnDestroy()
+    {
+        
+        _mainMenu.OnPlayButtonClicked -= PlayGame;
+    }
 }

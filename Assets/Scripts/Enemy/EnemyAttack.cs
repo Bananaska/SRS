@@ -25,10 +25,6 @@ public class EnemyAttack : MonoBehaviour
 
     private void Start()
     {
-        if (_target != null)
-        {
-            _target = GameObject.FindGameObjectWithTag("Player").transform;
-        }
         StartCoroutine(AttackCoroutine());
 
     }

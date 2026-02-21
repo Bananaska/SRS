@@ -5,10 +5,10 @@ using UnityEngine;
 public class ShootingController : MonoBehaviour
 {
     [Header("Префаб снаряда")]
-    public GameObject projectilePrefab;
+    [SerializeField] private GameObject projectilePrefab;
 
     [Header("Точка выстрела")]
-    public Transform firePoint;
+    [SerializeField] private Transform firePoint;
 
     [Header("Настройки стрельбы")]
     [SerializeField] private float fireRate = 0.5f;

@@ -57,5 +57,11 @@ public class MovementController : MonoBehaviour
 
         }
     }
+
+    private void OnDestroy()
+    {
+        _inputReceiver.OnMouseMove -= Rotate;
+
+    }
 }
 
