@@ -10,22 +10,22 @@ public class SimpleProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(targetTag))
+        if (other.CompareTag("Enemy"))
         {
             Debug.Log("Попадание");
 
             // Нанесение урона
-            EnemyHealth health = other.gameObject.GetComponent<EnemyHealth>();
-            if (health != null)
+            EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
             {
-                health.TakeDamage(_damage);
-                Debug.Log("Попадание");
-            }
+                enemyHealth.EnemyTakeDamage(_damage);
+                //Destroy(gameObject);
 
-            //Destroy(gameObject);
+            }
         }
         else if (other)
         {
+            Debug.Log("снаряд игрока уничтожен");
             Destroy(gameObject);
         }
     }

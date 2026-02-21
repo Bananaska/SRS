@@ -2,6 +2,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class GameContext : MonoBehaviour
 {
+    private int _kilsPoints = 0;
+
     private static GameContext _instance;
     public static GameContext Instance
     {
@@ -32,6 +34,11 @@ public class GameContext : MonoBehaviour
     private void Start()
     {
         SceneLoader.Instance.LoadNextScene();
+    }
+
+    public void AddKillsPoints()
+    {
+        _kilsPoints++;
     }
 
 }

@@ -28,6 +28,7 @@ public class HealthPLayer : MonoBehaviour
     public void PlayerDeath()
     {
         OnDeath?.Invoke();
+        SceneLoader.Instance.LoadNextScene();
 
     }
 
@@ -45,7 +46,13 @@ public class HealthPLayer : MonoBehaviour
             _health = _maxHealth;
         }
         OnPlayerHealthChanged?.Invoke(_health);
+
+        if (_health <= 0)
+        {
+            PlayerDeath();
+        }
     }
+
     
     private void OnDestroy()
     {
