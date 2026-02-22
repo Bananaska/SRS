@@ -52,4 +52,18 @@ public class SceneLoader : MonoBehaviour
         }
         SceneManager.LoadScene(nextIndex);
     }
+
+    public void LoadSceneByIndex(int index)
+    {
+        if (index >= SceneManager.sceneCountInBuildSettings)
+        {
+            if (_loopToFirstScene == false)
+            {
+                Debug.Log("Опасненько");
+                return;
+            }
+            index = 0;
+        }
+        SceneManager.LoadScene(index);
+    }
 }
