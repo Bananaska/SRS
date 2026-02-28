@@ -7,14 +7,15 @@ public class EnemyManager : MonoBehaviour
     private int _enemyCountInWave;
     [SerializeField] private EnemyType _enemyType;
     [SerializeField] private EnemyFactory _enemyFactory;
-    [SerializeField] private Vector3 _enemySpawnPointPosition;
-    private void CreateEnemyManager()
+    [SerializeField] private Transform _enemySpawnPointPosition;
+
+    private void Start()
     {
-        _enemyFactory.CreateEnemy(_enemyType, _enemySpawnPointPosition);
-
-
-
-
+        CreateBasicEnemy();
     }
 
+    private void CreateBasicEnemy()
+    {
+        _enemyFactory.CreateEnemy(EnemyType.Basic, _enemySpawnPointPosition.position);
+    }
 }

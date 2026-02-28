@@ -9,11 +9,7 @@ public class EnemyPool
     [SerializeField] private int poolSize = 10;
 
     private Queue<GameObject> pool = new Queue<GameObject>();
-    void Start()
-    {
 
-        
-    }
     public void Init(GameObject enemyPrefab)
     {
         _enemyPrefab = enemyPrefab;
