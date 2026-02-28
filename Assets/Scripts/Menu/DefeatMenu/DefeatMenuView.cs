@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DefatMenuView : MonoBehaviour
+public class DefeatMenuView : MonoBehaviour
 {
     [SerializeField] private Button _menuButton;
 
