@@ -27,9 +27,10 @@ public class HealthPLayer : MonoBehaviour
 
     public void PlayerDeath()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         OnDeath?.Invoke();
         SceneLoader.Instance.LoadNextScene();
-
     }
 
     public void PlayerHealthChanged(int value)

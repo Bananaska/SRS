@@ -17,7 +17,7 @@ public class MovementController : MonoBehaviour
     [SerializeField] private float _maxXAngle = 90f;
 
 
-    [Header("Цели вращения")]
+    [Header("Обьекты вращения")]
     [SerializeField] private Transform playerBody; 
     [SerializeField] private Transform cameraTransform; 
 
@@ -48,7 +48,7 @@ public class MovementController : MonoBehaviour
 
         cameraTransform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
 
-        // Горизонтальный поворот (влево/вправо) - вращаем тело игрока
+        // Горизонтальный поворот вращаем тело игрока
         if (playerBody != null)
         {
             xRotation -= mouseX;
