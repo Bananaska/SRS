@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyFactory : MonoBehaviour
 {
     [SerializeField] private EnemyData[] _enemyDatas;
-    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private EnemyAttack _enemyPrefab;
+    [SerializeField] private Transform _target;
 
     private EnemyPool _enemyPool;
     private void Awake()
@@ -16,6 +17,7 @@ public class EnemyFactory : MonoBehaviour
 
     public void CreateEnemy(EnemyType type, Vector3 position)
     {
-        _enemyPool.GetEnemy();
+        EnemyAttack enemy = _enemyPool.GetEnemy(position);
+        enemy.Init(_target);
     }
 }

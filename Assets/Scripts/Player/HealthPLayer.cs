@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthPLayer : MonoBehaviour
+public class HealthPlayer : MonoBehaviour
 {
     [SerializeField] private int _maxHealth = 5;
     [SerializeField] private int _health = 5;
@@ -11,7 +11,7 @@ public class HealthPLayer : MonoBehaviour
     public event Action<int> OnPlayerHealthChanged;
     public event Action OnDeath;
 
-    public static HealthPLayer Instance;
+    public static HealthPlayer Instance;
 
     private void Awake()
     {
@@ -37,21 +37,18 @@ public class HealthPLayer : MonoBehaviour
     {
         _health += value;
 
-        if (_health < 0)
+        if (_health <= 0)
         {
             OnDeath?.Invoke();
             _health = 0;
+            PlayerDeath();
+
         }
         if (_health > _maxHealth)
         {
             _health = _maxHealth;
         }
         OnPlayerHealthChanged?.Invoke(_health);
-
-        if (_health <= 0)
-        {
-            PlayerDeath();
-        }
     }
 
     

@@ -9,10 +9,7 @@ public class EnemyAttack : MonoBehaviour
 
     [Header("Точка выстрела")]
     [SerializeField] private Transform _firePoint;
-
-    [Header("Игрок")]
-    [SerializeField] private Transform _target;
-
+    
     [Header("Настройки стрельбы")]
     [SerializeField] private float _atackRate = 5;
     [SerializeField] private float _atackRange = 5;
@@ -21,12 +18,20 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private float _projectileSpeed = 10f;
     [SerializeField] private float _projectileLifetime = 3f;
 
+    [SerializeField] private EnemyHealth _enemyHealth;
 
+    private Transform _target;
 
-    private void Start()
+    public void Init(Transform playerPosition)
     {
+        _target = playerPosition;
         StartCoroutine(AttackCoroutine());
 
+    }
+
+    public EnemyHealth GetHealth()
+    {
+        return _enemyHealth;
     }
 
     IEnumerator AttackCoroutine()

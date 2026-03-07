@@ -102,11 +102,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectilePrefab: {fileID: 3473459247316957577, guid: 5a1beb8802c772d4f901dab7edf5b6b6, type: 3}
   _firePoint: {fileID: 1808792557563723921}
-  _target: {fileID: 0}
   _atackRate: 5
   _atackRange: 1
   _projectileSpeed: 50
   _projectileLifetime: 3
+  _enemyHealth: {fileID: 7772691366222532410}
 --- !u!114 &6603909205246069030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyHealth: {fileID: 7772691366222532410}
   _animator: {fileID: 2858749349983675803}
+  _destroyTime: 0.51
 --- !u!1001 &3346992394012756646
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,31 +4,19 @@ public class GameContext : MonoBehaviour
 {
     private int _kilsPoints = 0;
 
-    private static GameContext _instance;
-    public static GameContext Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new GameObject("GameContext").AddComponent<GameContext>();
-            }
-            return _instance;
-        }
-    }
+    public static GameContext Instance;
+
     private void Awake()
     {
-        if (_instance == null)
+        if (Instance != null)
         {
-
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(this);
+            Debug.Log("HealthPLayer уже существует");
+            return;
         }
-        else
-        {
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
 
-            Destroy(gameObject);
-        }
     }
 
     private void Start()

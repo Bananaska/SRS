@@ -5,28 +5,29 @@ using UnityEngine;
 
 public class EnemyPool
 {
-    private GameObject _enemyPrefab;
+    private EnemyAttack _enemyPrefab;
     [SerializeField] private int poolSize = 10;
 
-    private Queue<GameObject> pool = new Queue<GameObject>();
+    private Queue<EnemyAttack> pool = new Queue<EnemyAttack>();
 
-    public void Init(GameObject enemyPrefab)
+    public void Init(EnemyAttack enemyPrefab)
     {
         _enemyPrefab = enemyPrefab;
 
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject enemy = UnityEngine.Object.Instantiate(_enemyPrefab);
-            enemy.SetActive(false);
+            EnemyAttack enemy = UnityEngine.Object.Instantiate(_enemyPrefab);
+            enemy.gameObject.SetActive(false);
             pool.Enqueue(enemy);
         }
     }
-    public GameObject GetEnemy()
+    public EnemyAttack GetEnemy(Vector3 spawnPosition)
     {
         if (pool.Count > 0)
         {
-            GameObject enemy = pool.Dequeue();
-            enemy.SetActive(true); 
+            EnemyAttack enemy = pool.Dequeue();
+            enemy.gameObject.SetActive(true); 
+            enemy.transform.position = spawnPosition;
             return enemy;
         }
         else
@@ -36,9 +37,9 @@ public class EnemyPool
         }
     }
 
-    public void ReturnEnemy(GameObject enemy)
+    public void ReturnEnemy(EnemyAttack enemy)
     {
-        enemy.SetActive(false); 
+        enemy.gameObject.SetActive(false); 
         pool.Enqueue(enemy);   
     }
 

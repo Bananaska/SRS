@@ -13,7 +13,7 @@ public class BulletEnemy : MonoBehaviour
         if (other.CompareTag(targetTag))
         {
             // Нанесение урона
-            HealthPLayer _health = other.gameObject.GetComponent<HealthPLayer>();
+            HealthPlayer _health = other.gameObject.GetComponent<HealthPlayer>();
             if (_health != null)
             {
                 _health.PlayerHealthChanged(-_damage);

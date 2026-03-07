@@ -8,12 +8,12 @@ public class EnemyDeathObserver : MonoBehaviour
 
     [SerializeField] private EnemyHealth _enemyHealth;
     [SerializeField] private Animator _animator;
-    [SerializeField] private float _destroyTime;
+    [SerializeField] private float _destroyTime = 0.51f;
 
     private void Awake()
     {
-        _enemyHealth.OnEnemyHealthChange += HandleEnemyDeath;
-        
+        _enemyHealth.OnEnemyDeath += HandleEnemyDeath;
+        _destroyTime = 0.51f;
     }
 
     private void HandleEnemyDeath()
@@ -25,7 +25,7 @@ public class EnemyDeathObserver : MonoBehaviour
 
     private void OnDestroy()
     {
-        _enemyHealth.OnEnemyHealthChange -= HandleEnemyDeath;
+        _enemyHealth.OnEnemyDeath -= HandleEnemyDeath;
 
     }
 

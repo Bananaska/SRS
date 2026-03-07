@@ -21,18 +21,15 @@ public class SceneLoader : MonoBehaviour
     }
     private void Awake()
     {
-
-        if (_instance == null)
+        if (Instance != null)
         {
-
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(this);
+            Debug.Log("HealthPLayer уже существует");
+            return;
         }
-        else
-        {
+    
+        DontDestroyOnLoad(gameObject);
 
-            Destroy(gameObject);
-        }
     }
 
 

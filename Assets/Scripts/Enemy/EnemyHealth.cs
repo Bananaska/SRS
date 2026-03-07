@@ -7,17 +7,15 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private float _enemyHealth = 1f;
 
-    public event Action OnEnemyHealthChange;
+    public event Action OnEnemyDeath;
 
     public void EnemyTakeDamage(int damage)
     {
         _enemyHealth -= damage;
         Debug.Log(_enemyHealth);
-        if (_enemyHealth < 0)
+        if (_enemyHealth <= 0)
         {
-            OnEnemyHealthChange?.Invoke();
+            OnEnemyDeath?.Invoke();
         }
     }
-
-
 }
