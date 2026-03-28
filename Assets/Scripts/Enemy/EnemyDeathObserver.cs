@@ -6,12 +6,16 @@ public class EnemyDeathObserver : MonoBehaviour
 {
     private const string DeathAnimationName = "EnemyDeath";
 
-    [SerializeField] private EnemyHealth _enemyHealth;
+   
     [SerializeField] private Animator _animator;
     [SerializeField] private float _destroyTime = 0.51f;
+    [SerializeField] private EnemyAttack _enemy;
+
+    private EnemyHealth _enemyHealth;
 
     private void Awake()
     {
+        _enemyHealth = GetComponent<EnemyHealth>();
         _enemyHealth.OnEnemyDeath += HandleEnemyDeath;
         _destroyTime = 0.51f;
     }
@@ -32,6 +36,6 @@ public class EnemyDeathObserver : MonoBehaviour
     IEnumerator DestroyEnemy()
     {
         yield return new WaitForSeconds(_destroyTime);
-        Destroy(gameObject);
+        EnemyPool.Instance.ReturnEnemy(_enemy);
     }
 }

@@ -22,8 +22,8 @@ public class EnemyManager : MonoBehaviour
         int randomIndex = Random.Range(0, _enemyShelters.Length);
         if (_enemyShelters[randomIndex].IsEnemyHere == false)
         {
-            _enemyFactory.CreateEnemy(EnemyType.Basic, _enemyShelters[randomIndex].transform.position);
-            _enemyShelters[randomIndex].Fill();
+            EnemyAttack enemy = _enemyFactory.CreateEnemy(EnemyType.Basic, _enemyShelters[randomIndex].transform.position);
+            _enemyShelters[randomIndex].Fill(enemy);
         }
         StartCoroutine(CreateBasicEnemy());
 

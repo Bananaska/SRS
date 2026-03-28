@@ -14,14 +14,9 @@ public class SimpleProjectile : MonoBehaviour
         {
             Debug.Log("Попадание");
 
-            // Нанесение урона
-            EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
-            if (enemyHealth != null)
-            {
-                enemyHealth.EnemyTakeDamage(_damage);
-                //Destroy(gameObject);
+            var collisionDetector = other.gameObject.GetComponent<CollisionDetector>();
+            collisionDetector.DamageCollision(_damage);
 
-            }
         }
         else if (other)
         {

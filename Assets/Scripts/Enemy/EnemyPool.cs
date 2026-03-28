@@ -1,14 +1,21 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyPool
 {
+
+    private static readonly Lazy<EnemyPool> lazy =
+        new Lazy<EnemyPool>(() => new EnemyPool());
+
     private EnemyAttack _enemyPrefab;
     [SerializeField] private int poolSize = 10;
 
     private Queue<EnemyAttack> pool = new Queue<EnemyAttack>();
+
+    public static EnemyPool Instance => lazy.Value;
 
     public void Init(EnemyAttack enemyPrefab)
     {
@@ -19,7 +26,7 @@ public class EnemyPool
             EnemyAttack enemy = UnityEngine.Object.Instantiate(_enemyPrefab);
             enemy.gameObject.SetActive(false);
             pool.Enqueue(enemy);
-        }
+        }      
     }
     public EnemyAttack GetEnemy(Vector3 spawnPosition)
     {

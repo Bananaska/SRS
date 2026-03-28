@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class EnemyShelter : MonoBehaviour
 {
-    [SerializeField] private EnemyHealth _enemyHealth;
+    private EnemyHealth _enemyHealth;
 
     public bool IsEnemyHere;
     private EnemyAttack _enemy;
 
-    private void Awake()
+    public void Fill(EnemyAttack enemy)
     {
-        _enemyHealth.OnEnemyDeath += ShelterFree;
-        
-    }
-
-    public void Fill()
-    {
-        _enemyHealth = GetComponent<EnemyHealth>();
+        _enemyHealth = enemy.GetComponent<EnemyHealth>();
         EnemyHere();
+        _enemyHealth.OnEnemyDeath += ShelterFree;
     }
     private void EnemyHere()
     {
@@ -27,6 +22,9 @@ public class EnemyShelter : MonoBehaviour
 
     private void ShelterFree()
     {
+        _enemyHealth.OnEnemyDeath -= ShelterFree;
+        _enemyHealth = null;
         IsEnemyHere = false;
-    }
+    } 
+    
 }

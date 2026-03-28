@@ -5,31 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    private static SceneLoader _instance;
-
     private bool _loopToFirstScene;
-    public static SceneLoader Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new GameObject("SceneLoader").AddComponent<SceneLoader>();
-            }
-            return _instance;
-        }
-    }
+
+    public static SceneLoader Instance;
+    
     private void Awake()
     {
-        if (_instance != null)
+        if (Instance != null)
         {
             Destroy(this);
-            Debug.Log("HealthPLayer уже существует");
+            Debug.Log("SceneLoader уже существует");
             return;
         }
+
+        Instance = this;
     
         DontDestroyOnLoad(gameObject);
-
     }
 
 

@@ -15,10 +15,11 @@ public class EnemyFactory : MonoBehaviour
         _enemyPool.Init(_enemyPrefab);
     }
 
-    public void CreateEnemy(EnemyType type, Vector3 position)
+    public EnemyAttack CreateEnemy(EnemyType type, Vector3 position)
     {
-        if (_enemyPrefab == null) return;
+        if (_enemyPrefab == null) return null;
         EnemyAttack enemy = _enemyPool.GetEnemy(position);
         enemy.Init(_target);
+        return enemy;
     }
 }

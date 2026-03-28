@@ -18,9 +18,15 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private float _projectileSpeed = 10f;
     [SerializeField] private float _projectileLifetime = 3f;
 
-    [SerializeField] private EnemyHealth _enemyHealth;
+    private EnemyHealth _enemyHealth;
 
     private Transform _target;
+
+
+    private void Awake()
+    {
+        _enemyHealth = GetComponent<EnemyHealth>();
+    }
 
     public void Init(Transform playerPosition)
     {
@@ -34,7 +40,7 @@ public class EnemyAttack : MonoBehaviour
     {
         return _enemyHealth;
     }
-
+    
     IEnumerator AttackCoroutine()
     {
         while (true)

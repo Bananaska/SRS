@@ -11,7 +11,7 @@ public class GameContext : MonoBehaviour
         if (Instance != null)
         {
             Destroy(this);
-            Debug.Log("HealthPLayer уже существует");
+            Debug.Log("GameContext уже существует");
             return;
         }
         Instance = this;
