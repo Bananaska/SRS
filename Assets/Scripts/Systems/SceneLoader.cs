@@ -21,7 +21,7 @@ public class SceneLoader : MonoBehaviour
     }
     private void Awake()
     {
-        if (Instance != null)
+        if (_instance != null)
         {
             Destroy(this);
             Debug.Log("HealthPLayer уже существует");

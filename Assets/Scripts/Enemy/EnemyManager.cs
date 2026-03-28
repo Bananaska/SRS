@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    private int _enemyCountInWave;
+    [SerializeField] private int _enemyCountInWave=2;
     [SerializeField] private EnemyType _enemyType;
     [SerializeField] private EnemyFactory _enemyFactory;
     [SerializeField] private EnemyShelter[] _enemyShelters;
@@ -12,19 +12,22 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
-        CreateBasicEnemy();
+        StartCoroutine(CreateBasicEnemy());
     }
 
-    private void CreateBasicEnemy()
+    IEnumerator CreateBasicEnemy()
     {
-        while (true)
+
+        yield return new WaitForSeconds(4f);
+        int randomIndex = Random.Range(0, _enemyShelters.Length);
+        if (_enemyShelters[randomIndex].IsEnemyHere == false)
         {
-            int randomIndex = Random.Range(0, _enemyShelters.Length);
-            if (_enemyShelters[randomIndex].IsEnemyHere == false)
-            {
-                _enemyFactory.CreateEnemy(EnemyType.Basic, _enemyShelters[randomIndex].transform.position);
-                _enemyShelters[randomIndex]
-            }
+            _enemyFactory.CreateEnemy(EnemyType.Basic, _enemyShelters[randomIndex].transform.position);
+            _enemyShelters[randomIndex].Fill();
         }
+        StartCoroutine(CreateBasicEnemy());
+
     }
 }
+
+

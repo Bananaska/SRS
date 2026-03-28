@@ -19,7 +19,7 @@ public class BulletEnemy : MonoBehaviour
                 _health.PlayerHealthChanged(-_damage);
             }
 
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
         else if (other)
         {

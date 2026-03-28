@@ -24,6 +24,7 @@ public class EnemyAttack : MonoBehaviour
 
     public void Init(Transform playerPosition)
     {
+        StopAllCoroutines();
         _target = playerPosition;
         StartCoroutine(AttackCoroutine());
 

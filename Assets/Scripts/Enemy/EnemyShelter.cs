@@ -17,7 +17,8 @@ public class EnemyShelter : MonoBehaviour
 
     public void Fill()
     {
-        
+        _enemyHealth = GetComponent<EnemyHealth>();
+        EnemyHere();
     }
     private void EnemyHere()
     {

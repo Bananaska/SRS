@@ -17,6 +17,7 @@ public class EnemyFactory : MonoBehaviour
 
     public void CreateEnemy(EnemyType type, Vector3 position)
     {
+        if (_enemyPrefab == null) return;
         EnemyAttack enemy = _enemyPool.GetEnemy(position);
         enemy.Init(_target);
     }
