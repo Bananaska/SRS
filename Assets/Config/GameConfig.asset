@@ -12,12 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af78dbd790fd1404f84b51d8b7f5553d, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  waveDatas:
-  - EnemyCount: 10
-    enemyTypes: 
-  - EnemyCount: 20
-    enemyTypes: 
-  - EnemyCount: 0
-    enemyTypes: 
-  - EnemyCount: 0
-    enemyTypes: 
+  tenWave:
+  - waveDatas:
+    - EnemyCount: 2
+    - EnemyCount: 4
+    - EnemyCount: 6
+    - EnemyCount: 8
+    - EnemyCount: 10
+    - EnemyCount: 12
+    - EnemyCount: 15
+    - EnemyCount: 20
+    - EnemyCount: 30
+    - EnemyCount: 1
+    enemyType: 00000000010000000200000003000000
+  - waveDatas: []
+    enemyType: 
+  - waveDatas: []
+    enemyType: 
+  - waveDatas: []
+    enemyType: 
+  - waveDatas: []
+    enemyType: 
+  - waveDatas: []
+    enemyType: 
+  - waveDatas: []
+    enemyType: 
+  - waveDatas: []
+    enemyType: 
+  - waveDatas: []
+    enemyType: 
+  - waveDatas: []
+    enemyType: 

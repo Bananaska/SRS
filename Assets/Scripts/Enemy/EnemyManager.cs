@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] private int _enemyCountInWave=2;
+    [SerializeField] private int _enemyCountInWave = 2;
     [SerializeField] private EnemyType _enemyType;
     [SerializeField] private EnemyFactory _enemyFactory;
     [SerializeField] private EnemyShelter[] _enemyShelters;
+    [SerializeField] private GameConfig _gameConfig;
 
 
     private void Start()
@@ -18,7 +19,7 @@ public class EnemyManager : MonoBehaviour
     IEnumerator CreateBasicEnemy()
     {
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(1f);
         int randomIndex = Random.Range(0, _enemyShelters.Length);
         if (_enemyShelters[randomIndex].IsEnemyHere == false)
         {

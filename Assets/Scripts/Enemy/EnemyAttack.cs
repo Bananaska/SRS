@@ -45,6 +45,8 @@ public class EnemyAttack : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(_atackRate);
+
             Vector3 spread = new Vector3(
             Random.Range(-_atackRange, _atackRange),
             Random.Range(-_atackRange, _atackRange),
@@ -67,7 +69,6 @@ public class EnemyAttack : MonoBehaviour
             }
             Destroy(projectile, _projectileLifetime);
             Debug.Log("Враг выстрелил!");
-            yield return new WaitForSeconds(_atackRate);
 
         }
     }

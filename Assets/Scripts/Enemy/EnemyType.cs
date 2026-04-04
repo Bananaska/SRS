@@ -6,5 +6,6 @@ public enum EnemyType
 {
   Basic,
   Strong,
-  MachineGunner
+  MachineGunner,
+  Boss
 }

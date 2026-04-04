@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameConfig", menuName = "ScriptableObjects/GameConfig", order = 1)]
 public class GameConfig : ScriptableObject
 {
-    [SerializeField] private WaveData[] waveDatas;
+    [SerializeField] public TenWaveData[] tenWave;
 }
 
 
@@ -14,5 +14,16 @@ public class GameConfig : ScriptableObject
 public class WaveData
 {
     public int EnemyCount;
-    public EnemyType[] enemyTypes;
 }
+
+
+[Serializable]
+public class TenWaveData
+
+{
+    public WaveData[] waveDatas;
+    public EnemyType[] enemyType;
+}
+
+
+
