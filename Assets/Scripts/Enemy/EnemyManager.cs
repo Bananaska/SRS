@@ -10,6 +10,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private EnemyShelter[] _enemyShelters;
     [SerializeField] private GameConfig _gameConfig;
 
+    private int _enemyKiled = 0;
+
 
     private void Start()
     {

@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private float _enemyHealth = 1f;
+    [SerializeField] private float _enemyHealth;
     [SerializeField] private CollisionDetector _collisionDetector;
+    [SerializeField] private float _enemyHealthMax = 1f;
 
     public event Action OnEnemyDeath;
 
     private void Awake()
     {
         _collisionDetector.OnDamageCollision += EnemyTakeDamage;
+        _enemyHealth = _enemyHealthMax;
     }
 
     public void EnemyTakeDamage(int damage)
@@ -21,7 +23,9 @@ public class EnemyHealth : MonoBehaviour
         Debug.Log(_enemyHealth);
         if (_enemyHealth <= 0)
         {
+            _enemyHealth = _enemyHealthMax;
             OnEnemyDeath?.Invoke();
+            GameContext.Instance.AddKillsPoints();
         }
     }
 

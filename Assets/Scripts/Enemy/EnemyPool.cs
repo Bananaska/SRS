@@ -46,8 +46,9 @@ public class EnemyPool
 
     public void ReturnEnemy(EnemyAttack enemy)
     {
-        enemy.gameObject.SetActive(false); 
-        pool.Enqueue(enemy);   
+        pool.Enqueue(enemy);
+        enemy.gameObject.SetActive(false);
+
     }
 
 }

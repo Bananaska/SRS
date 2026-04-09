@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 public class GameContext : MonoBehaviour
@@ -5,6 +6,9 @@ public class GameContext : MonoBehaviour
     private int _kilsPoints = 0;
 
     public static GameContext Instance;
+
+    public event Action OnAddKillPoint;
+
 
     private void Awake()
     {
@@ -27,6 +31,7 @@ public class GameContext : MonoBehaviour
     public void AddKillsPoints()
     {
         _kilsPoints++;
+        OnAddKillPoint.Invoke();
     }
 
 }
