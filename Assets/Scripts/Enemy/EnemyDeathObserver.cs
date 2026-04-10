@@ -25,6 +25,7 @@ public class EnemyDeathObserver : MonoBehaviour
         GameContext.Instance.AddKillsPoints();
         StartCoroutine(DestroyEnemy());
         _animator.SetBool(DeathAnimationName, true);
+        EnemyPool.Instance.ReturnEnemy(_enemy);
     }
 
     private void OnDestroy()
