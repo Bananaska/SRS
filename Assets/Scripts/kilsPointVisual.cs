@@ -3,24 +3,39 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class kilsPointVisual : MonoBehaviour
+public class KilsPointVisual : MonoBehaviour
 {
     [SerializeField] private TMP_Text _scoreText;
 
-    private int _kilsPoints = 0;
+    [SerializeField] private int _kilsPoints = 0;
 
-    private GameContext _gameContext;
+    //private EnemyHealth _enemyHealth;
+
+    public static KilsPointVisual Instance;
 
 
     private void Awake()
     {
-        _gameContext.OnAddKillPoint += AddPoints;
-
+        //_enemyHealth.OnEnemyDeath += AddPoints;
+        if (Instance != null)
+        {
+            Destroy(this);
+            Debug.Log("KilsPointVisual уже существует");
+            return;
+        }
+        Instance = this;
     }
-
-    private void AddPoints()
+    
+    public void AddPoints()
     {
         _kilsPoints++;
+        Debug.Log(_kilsPoints);
         _scoreText.text = _kilsPoints.ToString();
+    }
+
+    private void OnDestroy()
+    {
+       // _enemyHealth.OnEnemyDeath -= AddPoints;
+
     }
 }

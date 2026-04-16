@@ -23,9 +23,12 @@ public class EnemyDeathObserver : MonoBehaviour
     private void HandleEnemyDeath()
     {
         GameContext.Instance.AddKillsPoints();
+        KilsPointVisual.Instance.AddPoints();
+
         StartCoroutine(DestroyEnemy());
         _animator.SetBool(DeathAnimationName, true);
         EnemyPool.Instance.ReturnEnemy(_enemy);
+        Debug.Log("Лошокпристрелен");
     }
 
     private void OnDestroy()
@@ -37,6 +40,7 @@ public class EnemyDeathObserver : MonoBehaviour
     IEnumerator DestroyEnemy()
     {
         yield return new WaitForSeconds(_destroyTime);
+        _enemy.gameObject.SetActive(false);
         EnemyPool.Instance.ReturnEnemy(_enemy);
     }
 }

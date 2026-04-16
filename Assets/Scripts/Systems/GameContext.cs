@@ -7,8 +7,6 @@ public class GameContext : MonoBehaviour
 
     public static GameContext Instance;
 
-    public event Action OnAddKillPoint;
-
 
     private void Awake()
     {
@@ -31,7 +29,6 @@ public class GameContext : MonoBehaviour
     public void AddKillsPoints()
     {
         _kilsPoints++;
-        OnAddKillPoint.Invoke();
     }
 
 }
