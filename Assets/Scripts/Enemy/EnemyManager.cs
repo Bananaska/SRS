@@ -15,7 +15,6 @@ public class EnemyManager : MonoBehaviour
 
     public static EnemyManager Instance;
 
-
     private void Awake()
     {
         if (Instance != null)
@@ -30,7 +29,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
-        if (remainingEnemys <= 0)
+        if (_liveEnemys <= 0)
         {
             StartCoroutine(WaveCouldown());
         }
@@ -39,11 +38,12 @@ public class EnemyManager : MonoBehaviour
     {
         _enemyCountInWave += 2;
         remainingEnemys = _enemyCountInWave;
+        _liveEnemys = _enemyCountInWave;
         StartCoroutine(CreateBasicEnemy());
     }
     public void EnemyDeath()
     {
-        remainingEnemys--;
+        _liveEnemys--;
     }
 
     IEnumerator CreateBasicEnemy()
@@ -55,6 +55,7 @@ public class EnemyManager : MonoBehaviour
             EnemyAttack enemy = _enemyFactory.CreateEnemy(EnemyType.Basic, _enemyShelters[randomIndex].transform.position);
             _enemyShelters[randomIndex].Fill(enemy);
         }
+        remainingEnemys--;
         if (remainingEnemys > 0)
         {
             StartCoroutine(CreateBasicEnemy());
@@ -63,7 +64,7 @@ public class EnemyManager : MonoBehaviour
 
     IEnumerator WaveCouldown()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(10f);
         Wave();
     }
 }

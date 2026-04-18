@@ -27,15 +27,12 @@ public class EnemyDeathObserver : MonoBehaviour
 
         StartCoroutine(DestroyEnemy());
         _animator.SetBool(DeathAnimationName, true);
-        EnemyPool.Instance.ReturnEnemy(_enemy);
-        //Debug.Log("Лошокпристрелен");
-        
+        EnemyPool.Instance.ReturnEnemy(_enemy);  
     }
 
     private void OnDestroy()
     {
         _enemyHealth.OnEnemyDeath -= HandleEnemyDeath;
-
     }
 
     IEnumerator DestroyEnemy()
