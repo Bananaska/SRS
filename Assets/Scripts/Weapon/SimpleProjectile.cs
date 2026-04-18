@@ -16,6 +16,7 @@ public class SimpleProjectile : MonoBehaviour
 
             var collisionDetector = other.gameObject.GetComponent<CollisionDetector>();
             collisionDetector.DamageCollision(_damage);
+            Destroy(gameObject);
 
         }
         else if (other)

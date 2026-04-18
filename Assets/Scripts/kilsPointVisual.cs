@@ -9,14 +9,12 @@ public class KilsPointVisual : MonoBehaviour
 
     [SerializeField] private int _kilsPoints = 0;
 
-    //private EnemyHealth _enemyHealth;
 
     public static KilsPointVisual Instance;
 
 
     private void Awake()
     {
-        //_enemyHealth.OnEnemyDeath += AddPoints;
         if (Instance != null)
         {
             Destroy(this);
@@ -26,16 +24,10 @@ public class KilsPointVisual : MonoBehaviour
         Instance = this;
     }
     
-    public void AddPoints()
+    public void AddPoints(int i)
     {
-        _kilsPoints++;
+        _kilsPoints = i;
         Debug.Log(_kilsPoints);
         _scoreText.text = _kilsPoints.ToString();
-    }
-
-    private void OnDestroy()
-    {
-       // _enemyHealth.OnEnemyDeath -= AddPoints;
-
     }
 }

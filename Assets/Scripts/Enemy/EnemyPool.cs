@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class EnemyPool
 {
@@ -39,7 +40,7 @@ public class EnemyPool
         }
         else
         {
-            Debug.LogWarning("Пул пуст! Возвращаю null.");
+            Debug.LogWarning("Пул пуст");
             return null;
         }
     }

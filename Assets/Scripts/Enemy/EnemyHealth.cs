@@ -20,12 +20,10 @@ public class EnemyHealth : MonoBehaviour
     public void EnemyTakeDamage(int damage)
     {
         _enemyHealth -= damage;
-        //Debug.Log(_enemyHealth);
         if (_enemyHealth <= 0)
         {
             _enemyHealth = _enemyHealthMax;
             OnEnemyDeath?.Invoke();
-            GameContext.Instance.AddKillsPoints();
         }
     }
 

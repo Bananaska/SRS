@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class EnemyAttack : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class EnemyAttack : MonoBehaviour
     private void Awake()
     {
         _enemyHealth = GetComponent<EnemyHealth>();
+
+        gameObject.transform.LookAt(_target);
     }
 
     public void Init(Transform playerPosition)
