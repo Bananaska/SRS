@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 65377621883374026}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.9782864, y: 8.462991, z: -15.762586}
+  m_LocalPosition: {x: -1.9782864, y: -0.31, z: 1.09}
   m_LocalScale: {x: 2.1699977, y: 0.21680881, z: 2.1699977}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -125,7 +125,7 @@ Transform:
   m_GameObject: {fileID: 209273026885396543}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8904506, y: 8.361001, z: -15.873255}
+  m_LocalPosition: {x: 0.8904506, y: -0.41199207, z: 0.97933054}
   m_LocalScale: {x: 2.1699977, y: 0.21680881, z: 2.1699977}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 1624380126550804173}
   - component: {fileID: 116197781461021088}
   - component: {fileID: 9137541195793417716}
+  - component: {fileID: 7926968882498098918}
   m_Layer: 0
   m_Name: png-klev-club-f8s0-p-meshki-s-peskom-png-12 (1)-no-bg-preview (carve.photos)
   m_TagString: Untagged
@@ -224,7 +225,7 @@ Transform:
   m_GameObject: {fileID: 2228589240853424143}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.30165368, y: 9.89, z: -16.961872}
+  m_LocalPosition: {x: -0.30165368, y: 1.1170073, z: -0.109286785}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -301,8 +302,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.0837264, y: 2.7436452, z: 0.2}
-  m_Center: {x: -0.45795015, y: -0.19408509, z: -0.0000019077936}
+  m_Size: {x: 4.0837264, y: 2.7436452, z: 1.4218606}
+  m_Center: {x: -0.45795015, y: -0.19408509, z: -0.34671426}
 --- !u!65 &1624380126550804173
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -322,8 +323,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.54351866, y: 2.403839, z: 0.2}
-  m_Center: {x: -2.655582, y: -0.38467553, z: -0.0000019077936}
+  m_Size: {x: 0.54351866, y: 2.403839, z: 0.5994192}
+  m_Center: {x: -2.655582, y: -0.38467562, z: 0.19970758}
 --- !u!65 &116197781461021088
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -343,8 +344,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.59028995, y: 2.6611016, z: 0.2}
-  m_Center: {x: 1.7550207, y: -0.25652555, z: -0.0000019077936}
+  m_Size: {x: 0.59028995, y: 2.661102, z: 0.3881842}
+  m_Center: {x: 1.7550207, y: -0.25652555, z: 0.09409002}
 --- !u!65 &9137541195793417716
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -364,8 +365,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.64946365, y: 1.6141678, z: 0.2}
-  m_Center: {x: 2.3592775, y: -0.544528, z: -0.0000019077936}
+  m_Size: {x: 0.64946365, y: 1.6141678, z: 0.64770824}
+  m_Center: {x: 2.3592775, y: -0.544528, z: 0.22385208}
+--- !u!65 &7926968882498098918
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2228589240853424143}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.791915, y: 2.8520458, z: 0.2}
+  m_Center: {x: -0.33784685, y: -0.22899105, z: 0}
 --- !u!1 &6238840506866236139
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +413,7 @@ Transform:
   m_GameObject: {fileID: 6238840506866236139}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.30165368, y: -9.641802, z: 16.961872}
+  m_LocalPosition: {x: 0.30165368, y: -15.21, z: 23.21}
   m_LocalScale: {x: 0.46083, y: 0.46083, z: 0.46083}
   m_ConstrainProportionsScale: 0
   m_Children:

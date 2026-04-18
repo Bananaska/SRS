@@ -4,23 +4,50 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] private int _enemyCountInWave = 2;
     [SerializeField] private EnemyType _enemyType;
     [SerializeField] private EnemyFactory _enemyFactory;
     [SerializeField] private EnemyShelter[] _enemyShelters;
     [SerializeField] private GameConfig _gameConfig;
 
-    private int _enemyKiled = 0;
+    private int _enemyCountInWave = 2;
+    private int remainingEnemys = 2;
+    private int _liveEnemys = 2;
+
+    public static EnemyManager Instance;
 
 
-    private void Start()
+    private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(this);
+            Debug.Log("EnemyManager уже существует");
+            return;
+        }
+        Instance = this;
+        Wave();
+    }
+
+    private void Update()
+    {
+        if (remainingEnemys <= 0)
+        {
+            StartCoroutine(WaveCouldown());
+        }
+    }
+    private void Wave()
+    {
+        _enemyCountInWave += 2;
+        remainingEnemys = _enemyCountInWave;
         StartCoroutine(CreateBasicEnemy());
+    }
+    public void EnemyDeath()
+    {
+        remainingEnemys--;
     }
 
     IEnumerator CreateBasicEnemy()
     {
-
         yield return new WaitForSeconds(1f);
         int randomIndex = Random.Range(0, _enemyShelters.Length);
         if (_enemyShelters[randomIndex].IsEnemyHere == false)
@@ -28,8 +55,16 @@ public class EnemyManager : MonoBehaviour
             EnemyAttack enemy = _enemyFactory.CreateEnemy(EnemyType.Basic, _enemyShelters[randomIndex].transform.position);
             _enemyShelters[randomIndex].Fill(enemy);
         }
-        StartCoroutine(CreateBasicEnemy());
+        if (remainingEnemys > 0)
+        {
+            StartCoroutine(CreateBasicEnemy());
+        }
+    }
 
+    IEnumerator WaveCouldown()
+    {
+        yield return new WaitForSeconds(4f);
+        Wave();
     }
 }
 
