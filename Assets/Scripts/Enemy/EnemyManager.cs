@@ -12,6 +12,7 @@ public class EnemyManager : MonoBehaviour
     private int _enemyCountInWave = 2;
     private int remainingEnemys = 2;
     private int _liveEnemys = 2;
+    private int _enemysInFight = 0;
 
     public static EnemyManager Instance;
 
@@ -27,13 +28,6 @@ public class EnemyManager : MonoBehaviour
         Wave();
     }
 
-    private void Update()
-    {
-        if (_liveEnemys <= 0)
-        {
-            StartCoroutine(WaveCouldown());
-        }
-    }
     private void Wave()
     {
         _enemyCountInWave += 2;
@@ -41,9 +35,15 @@ public class EnemyManager : MonoBehaviour
         _liveEnemys = _enemyCountInWave;
         StartCoroutine(CreateBasicEnemy());
     }
+    
     public void EnemyDeath()
     {
         _liveEnemys--;
+        _enemysInFight--;
+        if (_liveEnemys <=0 && remainingEnemys <= 0)
+        {
+            StartCoroutine(WaveCouldown());
+        }
     }
 
     IEnumerator CreateBasicEnemy()
@@ -56,7 +56,8 @@ public class EnemyManager : MonoBehaviour
             _enemyShelters[randomIndex].Fill(enemy);
         }
         remainingEnemys--;
-        if (remainingEnemys > 0)
+        _enemysInFight++;
+        if (remainingEnemys > 0 && _enemysInFight <= 10)
         {
             StartCoroutine(CreateBasicEnemy());
         }
