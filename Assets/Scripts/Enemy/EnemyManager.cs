@@ -46,15 +46,26 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    IEnumerator CreateBasicEnemy()
+    private void CreateEnemy()
     {
-        yield return new WaitForSeconds(1f);
         int randomIndex = Random.Range(0, _enemyShelters.Length);
         if (_enemyShelters[randomIndex].IsEnemyHere == false)
         {
             EnemyAttack enemy = _enemyFactory.CreateEnemy(EnemyType.Basic, _enemyShelters[randomIndex].transform.position);
             _enemyShelters[randomIndex].Fill(enemy);
         }
+        else if(_enemyShelters[randomIndex].IsEnemyHere == true)
+        {
+            CreateEnemy();
+        }
+    }
+
+    IEnumerator CreateBasicEnemy()
+    {
+        yield return new WaitForSeconds(1f);
+        
+        CreateEnemy();
+
         remainingEnemys--;
         _enemysInFight++;
         if (remainingEnemys > 0 && _enemysInFight <= 10)

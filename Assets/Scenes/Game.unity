@@ -1462,8 +1462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0026cb7ae7aa96047905916c90d30b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 5
-  _health: 5
+  _maxHealth: 1488
+  _health: 1488
 --- !u!1 &1478265710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1853,7 +1853,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44cade4c880dc8f4e8e4ea28a0051223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyCountInWave: 0
   _enemyType: 0
   _enemyFactory: {fileID: 1044225967}
   _enemyShelters:
@@ -1865,7 +1864,6 @@ MonoBehaviour:
   - {fileID: 1615355487}
   - {fileID: 708638200}
   - {fileID: 1523752782}
-  - {fileID: 1980778623}
   - {fileID: 557670527}
   _gameConfig: {fileID: 0}
 --- !u!4 &1660671779
@@ -2330,7 +2328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1980778623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2403,7 +2401,7 @@ Transform:
   m_GameObject: {fileID: 1980778622}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.67, y: -5.459, z: 10.506}
+  m_LocalPosition: {x: -0.54, y: -5.459, z: 11.27}
   m_LocalScale: {x: 1, y: 0.099912, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
