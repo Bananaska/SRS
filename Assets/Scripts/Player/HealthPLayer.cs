@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class HealthPlayer : MonoBehaviour
 {
     [SerializeField] private int _maxHealth = 5;
     [SerializeField] private int _health = 5;
+
+    [SerializeField] private TMP_Text _healthText;
 
     public event Action<int> OnPlayerHealthChanged;
     public event Action OnDeath;
@@ -22,6 +25,7 @@ public class HealthPlayer : MonoBehaviour
             return;
         }
         Instance = this;
+        _healthText.text = _health.ToString();
 
     }
 
@@ -48,9 +52,11 @@ public class HealthPlayer : MonoBehaviour
             _health = _maxHealth;
         }
         OnPlayerHealthChanged?.Invoke(_health);
+        _healthText.text = _health.ToString();
+
     }
 
-    
+
     private void OnDestroy()
     {
         OnDeath -= PlayerDeath;
