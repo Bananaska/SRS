@@ -40,7 +40,7 @@ public class EnemyManager : MonoBehaviour
         remainingToSpawnEnemies = _enemyCountInWave;
         _aliveInWaveEnemies = _enemyCountInWave;
         StartCoroutine(CreateBasicEnemy());
-
+        
     }
     
     private IEnumerator CreateBasicEnemy()
@@ -92,6 +92,13 @@ public class EnemyManager : MonoBehaviour
     IEnumerator WaveCouldown()
     {
         yield return new WaitForSeconds(10f);
+        _smallWave++;
+         
+        if (_smallWave > _gameConfig.tenWave[_bigWave].waveDatas.Length)
+        {
+            _bigWave++;
+            _smallWave= 0;
+        }
         StartNewWave();
     }
 
