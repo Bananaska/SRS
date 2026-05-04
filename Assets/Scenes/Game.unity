@@ -1645,10 +1645,10 @@ MonoBehaviour:
   projectilePrefab: {fileID: 8577405393340304237, guid: 91706997da981164ab175c61b33fbccf, type: 3}
   firePoint: {fileID: 201971684}
   fireRate: 0.5
-  projectileSpeed: 175
+  projectileSpeed: 200
   projectileLifetime: 3
   _possibleShoot: 1
-  _shootAudioSource: {fileID: 8300000, guid: 27d1d10a51e8ea74597729bb9a9061a1, type: 3}
+  _shootClip: {fileID: 8300000, guid: 27d1d10a51e8ea74597729bb9a9061a1, type: 3}
 --- !u!114 &1301188579
 MonoBehaviour:
   m_ObjectHideFlags: 0

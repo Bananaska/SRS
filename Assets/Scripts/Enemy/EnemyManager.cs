@@ -12,7 +12,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private AudioSource _damageAudioSource;
 
     private int _enemyCountInWave = 2;
-    private int remainingToSpawnEnemies = 2;
+    private int _remainingToSpawnEnemies = 2;
     private int _aliveInWaveEnemies = 2;
     private int _enemysInFight = 0;
 
@@ -37,7 +37,7 @@ public class EnemyManager : MonoBehaviour
     private void StartNewWave()
     {
         _enemyCountInWave = _gameConfig.tenWave[_bigWave].waveDatas[_smallWave].EnemyCount;
-        remainingToSpawnEnemies = _enemyCountInWave;
+        _remainingToSpawnEnemies = _enemyCountInWave;
         _aliveInWaveEnemies = _enemyCountInWave;
         StartCoroutine(CreateBasicEnemy());
         
@@ -51,9 +51,9 @@ public class EnemyManager : MonoBehaviour
 
         CreateEnemy(FindEmptyShelterIndex());
 
-        remainingToSpawnEnemies--;
+        _remainingToSpawnEnemies--;
         _enemysInFight++;
-        if (remainingToSpawnEnemies > 0 && _enemysInFight <= _enemyShelters.Length)
+        if (_remainingToSpawnEnemies > 0 && _enemysInFight <= _enemyShelters.Length)
         {
             StartCoroutine(CreateBasicEnemy());
         }
@@ -61,6 +61,7 @@ public class EnemyManager : MonoBehaviour
 
     private void CreateEnemy(int shelterIndex)
     {
+        int randomEmptyShelterIndex;//= Random.Range([shelterIndex]);
         if (shelterIndex == -1) return;
 
         //if (_enemyShelters[randomIndex].IsEnemyHere == false)   
@@ -94,10 +95,16 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(10f);
         _smallWave++;
          
-        if (_smallWave > _gameConfig.tenWave[_bigWave].waveDatas.Length)
+        if (_smallWave >= _gameConfig.tenWave[_bigWave].waveDatas.Length)
         {
             _bigWave++;
             _smallWave= 0;
+        }
+        if (_bigWave > _gameConfig.tenWave.Length)
+        {
+            Debug.Log("100 волн!!! - 'Перезагрузка'");
+            _bigWave = 0;
+            _smallWave = 0;
         }
         StartNewWave();
     }
@@ -106,7 +113,7 @@ public class EnemyManager : MonoBehaviour
     {
         _aliveInWaveEnemies--;
         _enemysInFight--;
-        if (_aliveInWaveEnemies <= 0 && remainingToSpawnEnemies <= 0)
+        if (_aliveInWaveEnemies <= 0 && _remainingToSpawnEnemies <= 0)
         {
             StartCoroutine(WaveCouldown());
         }
