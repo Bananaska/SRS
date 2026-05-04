@@ -22,24 +22,6 @@ MonoBehaviour:
     - EnemyCount: 12
     - EnemyCount: 15
     - EnemyCount: 20
+    - EnemyCount: 25
     - EnemyCount: 30
-    - EnemyCount: 1
-    enemyType: 00000000010000000200000003000000
-  - waveDatas: []
-    enemyType: 
-  - waveDatas: []
-    enemyType: 
-  - waveDatas: []
-    enemyType: 
-  - waveDatas: []
-    enemyType: 
-  - waveDatas: []
-    enemyType: 
-  - waveDatas: []
-    enemyType: 
-  - waveDatas: []
-    enemyType: 
-  - waveDatas: []
-    enemyType: 
-  - waveDatas: []
-    enemyType: 
+    enemyType: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
