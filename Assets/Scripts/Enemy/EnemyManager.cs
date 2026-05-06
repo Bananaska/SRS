@@ -18,7 +18,6 @@ public class EnemyManager : MonoBehaviour
 
     private int _smallWave;
     private int _bigWave;
-    
 
     public static EnemyManager Instance;
 
@@ -40,16 +39,16 @@ public class EnemyManager : MonoBehaviour
         _remainingToSpawnEnemies = _enemyCountInWave;
         _aliveInWaveEnemies = _enemyCountInWave;
         StartCoroutine(CreateBasicEnemy());
-        
     }
-    
+
     private IEnumerator CreateBasicEnemy()
     {
         yield return new WaitForSeconds(1f);
-
         yield return new WaitUntil(IsAnyShelterEmpty);
 
-        CreateEnemy(FindEmptyShelterIndex());
+        // Получаем случайный свободный спавнер
+        int shelterIndex = FindEmptyShelterIndex();
+        CreateEnemy(shelterIndex);
 
         _remainingToSpawnEnemies--;
         _enemysInFight++;
@@ -61,10 +60,8 @@ public class EnemyManager : MonoBehaviour
 
     private void CreateEnemy(int shelterIndex)
     {
-        int randomEmptyShelterIndex;//= Random.Range([shelterIndex]);
         if (shelterIndex == -1) return;
 
-        //if (_enemyShelters[randomIndex].IsEnemyHere == false)   
         EnemyAttack enemy = _enemyFactory.CreateEnemy(EnemyType.Basic, _enemyShelters[shelterIndex].transform.position);
         _enemyShelters[shelterIndex].Fill(enemy);
     }
@@ -75,30 +72,35 @@ public class EnemyManager : MonoBehaviour
         {
             if (shelter != null && !shelter.IsEnemyHere)
                 return true;
-
         }
         return false;
     }
 
+    // Возвращает индекс случайного свободного убежища, либо -1
     private int FindEmptyShelterIndex()
     {
+        List<int> emptyIndices = new List<int>();
         for (int i = 0; i < _enemyShelters.Length; i++)
         {
             if (_enemyShelters[i] != null && !_enemyShelters[i].IsEnemyHere)
-                return i;
+                emptyIndices.Add(i);
         }
-        return -1;
+
+        if (emptyIndices.Count == 0)
+            return -1;
+
+        return emptyIndices[Random.Range(0, emptyIndices.Count)];
     }
 
     IEnumerator WaveCouldown()
     {
         yield return new WaitForSeconds(10f);
         _smallWave++;
-         
+
         if (_smallWave >= _gameConfig.tenWave[_bigWave].waveDatas.Length)
         {
             _bigWave++;
-            _smallWave= 0;
+            _smallWave = 0;
         }
         if (_bigWave > _gameConfig.tenWave.Length)
         {
@@ -118,7 +120,4 @@ public class EnemyManager : MonoBehaviour
             StartCoroutine(WaveCouldown());
         }
     }
-
 }
-
-
