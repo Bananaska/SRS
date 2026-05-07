@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MachineGunner
   m_EditorClassIdentifier: 
   _enemyHealth: 1
-  _damage: 1
+  _damage: 2
   _atackRate: 5
   _atackRange: 5
   _visual: {fileID: 0}

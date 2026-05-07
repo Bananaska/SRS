@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2896ebf094d694282bc17bc3b5824c, type: 3}
   m_Name: Strong
   m_EditorClassIdentifier: 
-  _enemyHealth: 1
+  _enemyHealth: 2
   _damage: 1
   _atackRate: 5
   _atackRange: 5
