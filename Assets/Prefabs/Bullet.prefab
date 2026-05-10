@@ -55,10 +55,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.01
-  m_Height: 3
+  m_Radius: 1
+  m_Height: 5
   m_Direction: 2
-  m_Center: {x: -0.06196489, y: 0, z: -0.0031670213}
+  m_Center: {x: 0, y: 0, z: -1}
 --- !u!54 &5888768178355555417
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8b622ce03e1d9b74c8f350cd47d08dbc, type: 2}
+  - {fileID: 2100000, guid: 33304f32f14300c4894c52c20ec1ee42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -274,7 +274,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dd6fe0bee1c62964d8f3a7b8f6b7bf9f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
