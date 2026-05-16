@@ -28,13 +28,13 @@ public class EnemyAttack : MonoBehaviour
     {
         _enemyHealth = GetComponent<EnemyHealth>();
 
-        gameObject.transform.LookAt(_target);
     }
 
     public void Init(Transform playerPosition)
     {
         StopAllCoroutines();
         _target = playerPosition;
+        gameObject.transform.LookAt(_target);
         StartCoroutine(AttackCoroutine());
 
     }
