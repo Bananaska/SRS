@@ -1619,7 +1619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59cf761f526012d4a8930a638bbbbebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemiesConfig: {fileID: 0}
+  _enemiesConfig: {fileID: 11400000, guid: e25a43d4840a59c49b2c14814c1b3e38, type: 2}
   _enemyPrefab: {fileID: 3972051808469662415, guid: 51e141d63b910a743a662d7e6a652c61, type: 3}
   _target: {fileID: 1301188575}
 --- !u!4 &1044225968
