@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c2896ebf094d694282bc17bc3b5824c, type: 3}
-  m_Name: Basic
+  m_Name: Boss
   m_EditorClassIdentifier: 
-  _enemyHealth: 1
-  _damage: 1
-  _atackRate: 5
-  _atackRange: 5
-  _visual: {fileID: 21300000, guid: c1a22243e24a6f84ca13b20d4f9d9012, type: 3}
-  _enemyType: 0
+  _enemyHealth: 10
+  _damage: 2
+  _atackRate: 3
+  _atackRange: 3
+  _visual: {fileID: 21300000, guid: 4231e16b968dbc84a9d53ef1ad3c1d6d, type: 3}

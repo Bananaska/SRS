@@ -14,6 +14,7 @@ public class GameConfig : ScriptableObject
 public class WaveData
 {
     public int EnemyCount;
+    public List<EnemyType> enemyType;
 }
 
 
@@ -22,7 +23,6 @@ public class TenWaveData
 
 {
     public WaveData[] waveDatas;
-    public EnemyType[] enemyType;
 }
 
 

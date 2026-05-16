@@ -15,13 +15,22 @@ MonoBehaviour:
   tenWave:
   - waveDatas:
     - EnemyCount: 2
+      enemyType: 00000000
     - EnemyCount: 4
+      enemyType: 00000000
     - EnemyCount: 6
+      enemyType: 00000000
     - EnemyCount: 8
+      enemyType: 0000000001000000
     - EnemyCount: 10
+      enemyType: 0000000001000000
     - EnemyCount: 12
+      enemyType: 000000000100000002000000
     - EnemyCount: 15
+      enemyType: 000000000100000002000000
     - EnemyCount: 20
+      enemyType: 000000000100000002000000
     - EnemyCount: 25
+      enemyType: 000000000000000000000000
     - EnemyCount: 30
-    enemyType: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+      enemyType: 03000000

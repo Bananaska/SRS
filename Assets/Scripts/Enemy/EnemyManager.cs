@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] private EnemyType _enemyType;
+    [SerializeField] private List<EnemyType> _enemyTypesInSmallWave = new();
     [SerializeField] private EnemyFactory _enemyFactory;
     [SerializeField] private EnemyShelter[] _enemyShelters;
     [SerializeField] private GameConfig _gameConfig;
@@ -30,39 +31,57 @@ public class EnemyManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        if (_gameConfig == null || _gameConfig.tenWave == null || _gameConfig.tenWave.Length == 0)
+        {
+
+            Debug.LogError("EnemyManager: GameConfig не назначен или пустой");
+
+            return;
+
+        }
+
+        if (_bigWave >= _gameConfig.tenWave.Length) return;
+
+        if (_smallWave >= _gameConfig.tenWave[_bigWave].waveDatas.Length) return;
         StartNewWave();
     }
 
     private void StartNewWave()
     {
+        _enemyTypesInSmallWave = null;
+
         _enemyCountInWave = _gameConfig.tenWave[_bigWave].waveDatas[_smallWave].EnemyCount;
+        _enemyTypesInSmallWave = _gameConfig.tenWave[_bigWave].waveDatas[_smallWave].enemyType;
         _remainingToSpawnEnemies = _enemyCountInWave;
         _aliveInWaveEnemies = _enemyCountInWave;
-        StartCoroutine(CreateBasicEnemy());
+        StartCoroutine(CreateEnemyCoroutine());
     }
 
-    private IEnumerator CreateBasicEnemy()
+    private IEnumerator CreateEnemyCoroutine()
     {
         yield return new WaitForSeconds(1f);
         yield return new WaitUntil(IsAnyShelterEmpty);
 
         // Получаем случайный свободный спавнер
         int shelterIndex = FindEmptyShelterIndex();
-        CreateEnemy(shelterIndex);
+        int randomIndex = Random.Range(0, _enemyTypesInSmallWave.Count);
+        CreateEnemy(shelterIndex, _enemyTypesInSmallWave[randomIndex]);
 
         _remainingToSpawnEnemies--;
         _enemysInFight++;
         if (_remainingToSpawnEnemies > 0 && _enemysInFight <= _enemyShelters.Length)
         {
-            StartCoroutine(CreateBasicEnemy());
+            StartCoroutine(CreateEnemyCoroutine());
         }
     }
 
-    private void CreateEnemy(int shelterIndex)
+    private void CreateEnemy(int shelterIndex,
+         EnemyType type)
     {
         if (shelterIndex == -1) return;
 
-        EnemyAttack enemy = _enemyFactory.CreateEnemy(EnemyType.Basic, _enemyShelters[shelterIndex].transform.position);
+        EnemyAttack enemy = _enemyFactory.CreateEnemy(type, _enemyShelters[shelterIndex].transform.position);
         _enemyShelters[shelterIndex].Fill(enemy);
     }
 

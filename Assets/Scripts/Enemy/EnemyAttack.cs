@@ -19,6 +19,9 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private float _projectileSpeed = 10f;
     [SerializeField] private float _projectileLifetime = 3f;
 
+    [SerializeField] private EnemyVisual _enemyVisual;
+    private EnemyData _enemyData;
+
     private EnemyHealth _enemyHealth;
 
     private Transform _target;
@@ -30,9 +33,10 @@ public class EnemyAttack : MonoBehaviour
 
     }
 
-    public void Init(Transform playerPosition)
+    public void Init(Transform playerPosition, EnemyData enemyData)
     {
         StopAllCoroutines();
+        _enemyVisual.ChangeSprite(enemyData._visual);
         _target = playerPosition;
         gameObject.transform.LookAt(_target);
         StartCoroutine(AttackCoroutine());

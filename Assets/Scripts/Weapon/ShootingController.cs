@@ -17,6 +17,7 @@ public class ShootingController : MonoBehaviour
 
     [Header("ZoV")]
     [SerializeField] private bool _possibleShoot = true;
+    [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _shootClip;
 
     public void TryShoot()
@@ -38,7 +39,7 @@ public class ShootingController : MonoBehaviour
             firePoint.position,
             firePoint.rotation
          );
-            AudioSource.PlayClipAtPoint(_shootClip, transform.position);
+            _audioSource.PlayOneShot(_shootClip);
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             if (rb != null)
             {
