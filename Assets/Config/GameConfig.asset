@@ -19,11 +19,11 @@ MonoBehaviour:
     - EnemyCount: 4
       enemyType: 00000000
     - EnemyCount: 6
-      enemyType: 00000000
+      enemyType: 000000000000000001000000
     - EnemyCount: 8
       enemyType: 0000000001000000
     - EnemyCount: 10
-      enemyType: 0000000001000000
+      enemyType: 0000000001000000020000000000000001000000
     - EnemyCount: 12
       enemyType: 000000000100000002000000
     - EnemyCount: 15
@@ -32,5 +32,30 @@ MonoBehaviour:
       enemyType: 000000000100000002000000
     - EnemyCount: 25
       enemyType: 000000000000000000000000
-    - EnemyCount: 30
+    - EnemyCount: 1
       enemyType: 03000000
+    - EnemyCount: 1
+      enemyType: 04000000
+  - waveDatas:
+    - EnemyCount: 3
+      enemyType: 00000000
+    - EnemyCount: 5
+      enemyType: 00000000
+    - EnemyCount: 7
+      enemyType: 000000000000000001000000
+    - EnemyCount: 10
+      enemyType: 0000000001000000
+    - EnemyCount: 12
+      enemyType: 000000000100000002000000
+    - EnemyCount: 15
+      enemyType: 000000000100000002000000
+    - EnemyCount: 18
+      enemyType: 000000000100000002000000
+    - EnemyCount: 22
+      enemyType: 000000000100000002000000
+    - EnemyCount: 26
+      enemyType: 000000000000000000000000
+    - EnemyCount: 1
+      enemyType: 03000000
+    - EnemyCount: 1
+      enemyType: 04000000

@@ -26,4 +26,9 @@ public class BulletEnemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void ChangeDamage(int change)
+    {
+        _damage = change;
+    } 
 }

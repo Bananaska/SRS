@@ -204,7 +204,7 @@ MonoBehaviour:
   _firePoint: {fileID: 1808792557563723921}
   _atackRate: 5
   _atackRange: 1
-  _projectileSpeed: 50
+  _projectileSpeed: 140
   _projectileLifetime: 3
   _enemyVisual: {fileID: 7950564611594657986}
 --- !u!114 &6603909205246069030

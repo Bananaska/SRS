@@ -7,6 +7,7 @@ using UnityEngine;
 public class InputReceiver : MonoBehaviour
 {
     public event Action OnMouseClicked;
+    public event Action OnSpaceClicked;
     public event Action<Vector2> OnMouseMove;
     private Vector2 _mouseMovement = new();
 
@@ -25,6 +26,10 @@ public class InputReceiver : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             OnMouseClicked?.Invoke();
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            OnSpaceClicked?.Invoke();
         }
     }
 

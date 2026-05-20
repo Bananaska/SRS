@@ -23,9 +23,9 @@ public class EnemyAttack : MonoBehaviour
     private EnemyData _enemyData;
 
     private EnemyHealth _enemyHealth;
+    private BulletEnemy _bulletEnemy;
 
     private Transform _target;
-
 
     private void Awake()
     {
@@ -37,7 +37,10 @@ public class EnemyAttack : MonoBehaviour
     {
         StopAllCoroutines();
         _enemyVisual.ChangeSprite(enemyData._visual);
+        _enemyHealth.EnemyTakeDamage(-(enemyData._enemyHealth - 1));   
         _target = playerPosition;
+        _atackRate = enemyData._atackRate;
+        _atackRange = enemyData._atackRange;
         gameObject.transform.LookAt(_target);
         StartCoroutine(AttackCoroutine());
 
@@ -69,11 +72,14 @@ public class EnemyAttack : MonoBehaviour
             _firePoint.rotation
          );
 
+
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             if (rb != null)
             {
                 rb.velocity = direction * _projectileSpeed;
             }
+            
+
             Destroy(projectile, _projectileLifetime);
             Debug.Log("Враг выстрелил!");
 

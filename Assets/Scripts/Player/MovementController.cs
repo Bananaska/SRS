@@ -6,6 +6,8 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     [SerializeField] private InputReceiver _inputReceiver;
+    [SerializeField] private Animator _animator;
+
 
     [Header("Настройки чувствительности")]
     [SerializeField] private float _mouseSensitivity = 1f;
@@ -24,9 +26,12 @@ public class MovementController : MonoBehaviour
     private float yRotation = 0f;
     private float xRotation = 0f;
 
+    private bool _evasionReload = false;
+
     private void Awake()
     {
         _inputReceiver.OnMouseMove += Rotate;
+        _inputReceiver.OnSpaceClicked += Evasion;
     }
     void Start()
     {
@@ -57,11 +62,26 @@ public class MovementController : MonoBehaviour
 
         }
     }
+    private void Evasion()
+    {
+        if (_evasionReload == false)
+        {
+            _evasionReload = true;
+            _animator.SetBool("Evasion", true);
+            StartCoroutine(EvasionReload());
+        }
+    }
+    IEnumerator EvasionReload()
+    {
+        yield return new WaitForSeconds(1.9f);
+        _evasionReload = false;
+        _animator.SetBool("Evasion", false);
 
+    }
     private void OnDestroy()
     {
         _inputReceiver.OnMouseMove -= Rotate;
-
+        _inputReceiver.OnSpaceClicked -= Evasion;
     }
 }
 

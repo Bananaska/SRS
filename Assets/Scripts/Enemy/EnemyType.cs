@@ -9,5 +9,6 @@ public enum EnemyType
   Basic,
   Strong,
   MachineGunner,
-  Boss
+  Boss,
+  Boss2faZa
 }
