@@ -29,6 +29,6 @@ public class BulletEnemy : MonoBehaviour
 
     public void ChangeDamage(int change)
     {
-        _damage = change;
+        //_damage = change;
     } 
 }

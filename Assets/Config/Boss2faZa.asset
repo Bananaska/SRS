@@ -15,5 +15,5 @@ MonoBehaviour:
   _enemyHealth: 6
   _damage: 3
   _atackRate: 2
-  _atackRange: 6
+  _atackRange: 1
   _visual: {fileID: 21300000, guid: e0b25175ffd628c4687035c1188ee4e1, type: 3}

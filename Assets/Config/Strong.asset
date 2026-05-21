@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyHealth: 2
   _damage: 1
-  _atackRate: 5
-  _atackRange: 5
+  _atackRate: 4
+  _atackRange: 0.9
   _visual: {fileID: 21300000, guid: 5390d9a014c00934ea6ddf61b767dfab, type: 3}
-  _enemyType: 1
