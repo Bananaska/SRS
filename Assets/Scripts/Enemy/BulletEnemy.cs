@@ -17,6 +17,7 @@ public class BulletEnemy : MonoBehaviour
             if (_health != null)
             {
                 _health.PlayerHealthChanged(-_damage);
+                Debug.Log($"”рон от пули: {_damage}");
             }
 
             Destroy(gameObject);
@@ -29,6 +30,6 @@ public class BulletEnemy : MonoBehaviour
 
     public void ChangeDamage(int change)
     {
-        //_damage = change;
+        _damage = change;
     } 
 }

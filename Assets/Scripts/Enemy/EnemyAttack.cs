@@ -6,7 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 public class EnemyAttack : MonoBehaviour
 {
     [Header("Префаб снаряда")]
-    [SerializeField] private GameObject _projectilePrefab;
+    [SerializeField] private BulletEnemy _projectilePrefab;
 
     [Header("Точка выстрела")]
     [SerializeField] private Transform _firePoint;
@@ -35,6 +35,7 @@ public class EnemyAttack : MonoBehaviour
 
     public void Init(Transform playerPosition, EnemyData enemyData)
     {
+        _enemyData = enemyData;
         StopAllCoroutines();
         _enemyVisual.ChangeSprite(enemyData._visual);
         _enemyHealth.EnemyTakeDamage(-(enemyData._enemyHealth - 1));   
@@ -65,13 +66,13 @@ public class EnemyAttack : MonoBehaviour
             Vector3 direction = (_target.position - _firePoint.position + spread).normalized;
 
             // Создаём снаряд
-            GameObject projectile = Instantiate
+            BulletEnemy projectile = Instantiate
          (
             _projectilePrefab,
             _firePoint.position,
             _firePoint.rotation
          );
-
+            projectile.ChangeDamage(_enemyData._damage);
 
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             if (rb != null)

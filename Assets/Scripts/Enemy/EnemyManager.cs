@@ -16,6 +16,7 @@ public class EnemyManager : MonoBehaviour
     private int _remainingToSpawnEnemies = 2;
     private int _aliveInWaveEnemies = 2;
     private int _enemysInFight = 0;
+    private int _heavyCount = 0;
 
     private int _smallWave;
     private int _bigWave;
@@ -51,6 +52,7 @@ public class EnemyManager : MonoBehaviour
     {
         _enemyTypesInSmallWave = null;
 
+        _heavyCount = 0;
         _enemyCountInWave = _gameConfig.tenWave[_bigWave].waveDatas[_smallWave].EnemyCount;
         _enemyTypesInSmallWave = _gameConfig.tenWave[_bigWave].waveDatas[_smallWave].enemyType;
         _remainingToSpawnEnemies = _enemyCountInWave;
@@ -66,6 +68,14 @@ public class EnemyManager : MonoBehaviour
         // Получаем случайный свободный спавнер
         int shelterIndex = FindEmptyShelterIndex();
         int randomIndex = Random.Range(0, _enemyTypesInSmallWave.Count);
+        if (randomIndex == 1 && _heavyCount < 2)
+        {
+            _heavyCount ++;
+        }
+        else if (randomIndex == 1 && _heavyCount >= 2)
+        {
+            randomIndex = 0;
+        }
         CreateEnemy(shelterIndex, _enemyTypesInSmallWave[randomIndex]);
 
         _remainingToSpawnEnemies--;

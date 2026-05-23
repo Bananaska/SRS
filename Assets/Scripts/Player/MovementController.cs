@@ -67,16 +67,15 @@ public class MovementController : MonoBehaviour
         if (_evasionReload == false)
         {
             _evasionReload = true;
-            _animator.SetBool("Evasion", true);
+            _animator.SetTrigger("Evasion");
             StartCoroutine(EvasionReload());
         }
+        
     }
     IEnumerator EvasionReload()
     {
         yield return new WaitForSeconds(1.9f);
         _evasionReload = false;
-        _animator.SetBool("Evasion", false);
-
     }
     private void OnDestroy()
     {
