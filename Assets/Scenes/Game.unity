@@ -1008,8 +1008,8 @@ Transform:
   m_GameObject: {fileID: 295487434}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.2399998, y: -5.048, z: 8.223}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.15}
+  m_LocalPosition: {x: -3.2399998, y: -5.253, z: 8.223}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1993,8 +1993,8 @@ Transform:
   m_GameObject: {fileID: 779733627}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.13, y: -3.96, z: 14.54}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.15}
+  m_LocalPosition: {x: -12.13, y: -4.13, z: 14.54}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2707,13 +2707,13 @@ GameObject:
   - component: {fileID: 1301188575}
   - component: {fileID: 1301188574}
   - component: {fileID: 1301188573}
-  - component: {fileID: 1301188572}
   - component: {fileID: 1301188576}
   - component: {fileID: 1301188577}
   - component: {fileID: 1301188578}
   - component: {fileID: 1301188579}
   - component: {fileID: 1301188580}
   - component: {fileID: 1301188581}
+  - component: {fileID: 1301188582}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2721,29 +2721,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &1301188572
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1301188571}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.2343319
-  m_Height: 0.4686638
-  m_Direction: 1
-  m_Center: {x: -0.0014472604, y: 0.7656681, z: 0}
 --- !u!23 &1301188573
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2913,6 +2890,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &1301188582
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301188571}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1366028914
 GameObject:
   m_ObjectHideFlags: 0
