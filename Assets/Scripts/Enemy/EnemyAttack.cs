@@ -65,7 +65,7 @@ public class EnemyAttack : MonoBehaviour
             );
             Vector3 direction = (_target.position - _firePoint.position + spread).normalized;
 
-            // Создаём снаряд
+            // Создание снаряда
             BulletEnemy projectile = Instantiate
          (
             _projectilePrefab,

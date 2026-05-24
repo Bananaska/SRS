@@ -29,7 +29,8 @@ public class GameContext : MonoBehaviour
     public void AddKillsPoints()
     {
         _kilsPoints++;
-        KilsPointVisual.Instance.AddPoints(_kilsPoints);
+        KilsPointVisual.Instance.AddPoints();
+        GlobalKillPointsVisual.Instance.AddPoints(_kilsPoints);
 
     }
 

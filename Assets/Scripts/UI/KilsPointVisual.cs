@@ -28,21 +28,21 @@ public class KilsPointVisual : MonoBehaviour
         _healthPlayer.OnDeath += ResetToZero;
     }
     
-    public void AddPoints(int i)
+    public void AddPoints()
     {
-        _kilsPoints = i;
+        _kilsPoints ++;
         Debug.Log(_kilsPoints);
         _scoreText.text = _kilsPoints.ToString();
     }
     private void ResetToZero()
     {
         _kilsPoints = 0;
-        _healthPlayer.OnDeath -= ResetToZero;
 
     }
 
     private void OnDestroy()
     {
+        _healthPlayer.OnDeath -= ResetToZero;
 
     }
 }

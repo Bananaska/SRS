@@ -17,7 +17,6 @@ public class BulletEnemy : MonoBehaviour
             if (_health != null)
             {
                 _health.PlayerHealthChanged(-_damage);
-                Debug.Log($"”рон от пули: {_damage}");
             }
 
             Destroy(gameObject);
