@@ -11,6 +11,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private EnemyShelter[] _enemyShelters;
     [SerializeField] private GameConfig _gameConfig;
     [SerializeField] private AudioSource _damageAudioSource;
+    [SerializeField] private SheltersAssigner _sheltersAssigner;
 
     private int _enemyCountInWave = 2;
     private int _remainingToSpawnEnemies = 2;
@@ -45,6 +46,9 @@ public class EnemyManager : MonoBehaviour
         if (_bigWave >= _gameConfig.tenWave.Length) return;
 
         if (_smallWave >= _gameConfig.tenWave[_bigWave].waveDatas.Length) return;
+
+        _sheltersAssigner.Mixing();
+
         StartNewWave();
     }
 
@@ -130,6 +134,8 @@ public class EnemyManager : MonoBehaviour
         {
             _bigWave++;
             _smallWave = 0;
+            _sheltersAssigner.Mixing();
+
         }
         if (_bigWave >= _gameConfig.tenWave.Length)
         {
