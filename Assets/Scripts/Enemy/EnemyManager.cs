@@ -131,7 +131,7 @@ public class EnemyManager : MonoBehaviour
             _bigWave++;
             _smallWave = 0;
         }
-        if (_bigWave > _gameConfig.tenWave.Length)
+        if (_bigWave >= _gameConfig.tenWave.Length)
         {
             Debug.Log("100 волн!!! - 'Перезагрузка'");
             _bigWave = 0;
