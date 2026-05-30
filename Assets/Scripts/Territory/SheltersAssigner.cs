@@ -6,6 +6,7 @@ public class SheltersAssigner : MonoBehaviour
 {
     [SerializeField] private ShelterPoint[] _points;
     [SerializeField] private GameObject[] _shelters;
+    [SerializeField] private GameObject[] _Backgrounds;
 
     private int _randomIndex;
 
@@ -30,7 +31,12 @@ public class SheltersAssigner : MonoBehaviour
             _shelters[i].transform.position = _points[_randomIndex].transform.position;
             _points[_randomIndex].SetFree(false);
         }
-
+        for (int i = 0; i < _Backgrounds.Length; i++)
+        {
+            _Backgrounds[i].SetActive(false);
+        }
+        int randomBgIndex = Random.Range(0, _Backgrounds.Length);
+        _Backgrounds[randomBgIndex].SetActive(true);
 
     }
 

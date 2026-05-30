@@ -82,7 +82,6 @@ public class EnemyAttack : MonoBehaviour
             
 
             Destroy(projectile, _projectileLifetime);
-            Debug.Log("Враг выстрелил!");
 
         }
     }
